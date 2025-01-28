@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 // MongoDB Connection
 mongoose.connect(
-  "mongodb+srv://milins2710:milinsocin32@socin.mmlzaer.mongodb.net/v1"
+  process.env.MONGO_URL
 );
 
 // Set up multer for file upload handling
@@ -66,7 +66,7 @@ app.post("/login", async (req, res) => {
     if (passOk) {
       jwt.sign(
         { username, id: userDoc._id },
-        "oierluhkt347rhye4jeikrhy8iwerh483ijrehtr84irjoqpz",
+        process.env.SECRET,
         {},
         (err, tokensocin) => {
           if (err) {
@@ -165,7 +165,7 @@ app.get("/profile", (req, res) => {
 
   jwt.verify(
     tokensocin,
-    "oierluhkt347rhye4jeikrhy8iwerh483ijrehtr84irjoqpz",
+    process.env.SECRET,
     (err, info) => {
       if (err) {
         console.error("tokensocin verification error:", err);
@@ -185,7 +185,7 @@ app.post("/profilepage", (req, res) => {
 
   jwt.verify(
     tokensocin,
-    "oierluhkt347rhye4jeikrhy8iwerh483ijrehtr84irjoqpz",
+    process.env.SECRET,
     async (err, info) => {
       if (err) {
         console.error("tokensocin verification error:", err);
@@ -240,7 +240,7 @@ app.post("/postsbyuser", async (req, res) => {
 
   jwt.verify(
     tokensocin,
-    "oierluhkt347rhye4jeikrhy8iwerh483ijrehtr84irjoqpz",
+    process.env.SECRET,
     async (err, info) => {
       if (err) {
         console.error("tokensocin verification error:", err);
@@ -274,7 +274,7 @@ app.post("/postrec", async (req, res) => {
 
   jwt.verify(
     tokensocin,
-    "oierluhkt347rhye4jeikrhy8iwerh483ijrehtr84irjoqpz",
+    process.env.SECRET,
     async (err, info) => {
       if (err) {
         console.error("tokensocin verification error:", err);
@@ -305,7 +305,7 @@ app.post("/usernames", async (req, res) => {
 
   jwt.verify(
     tokensocin,
-    "oierluhkt347rhye4jeikrhy8iwerh483ijrehtr84irjoqpz",
+    process.env.SECRET,
     async (err, info) => {
       if (err) {
         console.error("tokensocin verification error:", err);
@@ -341,7 +341,7 @@ app.post("/sendreq", async (req, res) => {
 
   jwt.verify(
     tokensocin,
-    "oierluhkt347rhye4jeikrhy8iwerh483ijrehtr84irjoqpz",
+    process.env.SECRET,
     async (err, info) => {
       if (err) {
         console.error("tokensocin verification error:", err);
